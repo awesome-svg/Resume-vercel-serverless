@@ -70,9 +70,17 @@ app.post('/api/recruitment/apply', upload.single('resume'), async (req, res) => 
       return res.status(400).json({ code: 400, msg: '请上传简历文件' });
     }
 
+		 let originalName = resumeFile.originalname;
+    try {
+        // 尝试修复可能的 Latin1 编码问题（常见于某些客户端上传）
+        originalName = Buffer.from(originalName, 'latin1').toString('utf-8');
+    } catch (e) {
+        // 如果已经是 UTF-8，则保持不变
+    }
+		
     // 3. 上传文件到 Vercel Blob
     // 生成唯一文件名，避免冲突
-    const fileExtension = path.extname(resumeFile.originalname);
+    const fileExtension = path.extname(originalname);
     const uniqueFileName = `resumes/${uuidv4()}${fileExtension}`;
     
     // 上传到 Vercel Blob
