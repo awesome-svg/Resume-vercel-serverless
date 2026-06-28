@@ -80,8 +80,8 @@ app.post('/api/recruitment/apply', upload.single('resume'), async (req, res) => 
 		
     // 3. 上传文件到 Vercel Blob
     // 生成唯一文件名，避免冲突
-    const fileExtension = path.extname(originalName);
-    const uniqueFileName = `resumes/${uuidv4()}${fileExtension}`;
+    //const fileExtension = path.extname(originalName);
+    const uniqueFileName = `resumes/${uuidv4()}${originalName}`;
     
     // 上传到 Vercel Blob
     // access: 'public' 允许公开访问（如果需要私有，设为 'private' 并生成签名 URL）
