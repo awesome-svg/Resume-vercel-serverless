@@ -70,7 +70,7 @@ app.post('/api/recruitment/apply', upload.single('resume'), async (req, res) => 
       return res.status(400).json({ code: 400, msg: '请上传简历文件' });
     }
 
-		 let originalName = resumeFile.originalname;
+		let originalName = resumeFile.originalname;
     try {
         // 尝试修复可能的 Latin1 编码问题（常见于某些客户端上传）
         originalName = Buffer.from(originalName, 'latin1').toString('utf-8');
