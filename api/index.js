@@ -88,6 +88,7 @@ app.post('/api/recruitment/apply', upload.single('resume'), async (req, res) => 
     const blob = await put(uniqueFileName, resumeFile.buffer, {
       access: 'public',
       contentType: resumeFile.mimetype,
+			addRandomSuffix: false, // ✅ 关键：关闭自动添加随机后缀
     });
 
     // blob.url 是文件的公开访问地址
