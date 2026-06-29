@@ -137,7 +137,7 @@ app.post('/api/recruitment/apply', upload.single('resume'), async (req, res) => 
   }
 });
 // 合作咨询接口
-app.post('api/contact/messageSubmit', async (req, res) => {
+app.post('/api/contact/messageSubmit', async (req, res) => {
   try {
     const { name, email, phone, company_name, subject, message } = req.body;
 
