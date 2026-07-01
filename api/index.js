@@ -16,6 +16,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// 全局缓存中间件
+app.use((req, res, next) => {
+  // 仅对 GET 请求设置缓存，避免 POST/PUT 等写操作被缓存
+  if (req.method === 'GET') {
+    res.set('Cache-Control', 'public, max-age=300');
+  }
+  next();
+});
 
 
 
