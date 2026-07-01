@@ -5,7 +5,7 @@ const router = express.Router();
 
 // 引入静态JSON数据作为模拟数据库
 // 假设 qAqSearch.json 是一个数组，结构如: [{ id, title, content, tags }, ...]
-const mockDatabase = require('../config/qAqSearch.json');
+const mockDatabase = require('../config/qaqSearch.json');
 
 router.get('/qAqSearch', (req, res) => {
     try {
