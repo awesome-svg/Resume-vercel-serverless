@@ -3,7 +3,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/api/contact/messageSubmit', async (req, res) => {
+router.post('/messageSubmit', async (req, res) => {
   const pool = req.app.locals.pool; // 从 locals 获取 pool
   try {
     const { name, email, phone, company_name, subject, message } = req.body;
